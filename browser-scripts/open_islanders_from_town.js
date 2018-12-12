@@ -1,3 +1,10 @@
+/**
+ * Run this on a town's page. Iterates through the houses on that page and
+ * sends data back to a local logging server.
+ *
+ * @author Matthew Routon
+ * @version 12-12-18
+ */
 (async () => {
 
     let cityName = getCityName();
@@ -26,11 +33,14 @@
 
     console.log(houseNumbers);
 
-    await clickFirstHouse()
+    await clickFirstHouse();
 
-    for (let i = 0; i < houseNumbers.length; i++) {
+
+    let numHousesToSurvey = Math.floor(houseNumbers.length * 0.25); // TODO: calculate this proportionally to the town size.
+    for (let i = 0; i < numHousesToSurvey; i++) {
 
         let currentHouseNumber = houseNumbers[i];
+        // TODO: fn getNextHouseNumber return random unvisited value.
         console.log("Looking for info on house #: " + currentHouseNumber);
 
         // open the modal
@@ -43,8 +53,14 @@
             let houseInfoEl = document.getElementById('houseinfo');
             let currentHouseOnModal = houseInfoEl.getElementsByTagName('h4')[0].innerHTML;
             let currentHouseNumberOnModal = parseInt(currentHouseOnModal.split(' ')[1]);
-            let rows = houseInfoEl.getElementsByTagName("tr");
+
+            let houseTableEl = houseInfoEl.getElementsByClassName("residents")[0];
+
+            let rows = houseTableEl.getElementsByTagName("tr");
+
+            // if this house isn't empty
             let numResidents = rows.length;
+            // else resident count = 0
 
             console.log("Current house on modal: " + currentHouseOnModal);
             console.log("Current house number on modal: " + currentHouseNumberOnModal);
@@ -65,11 +81,6 @@
 
             await sleep(1500);
         }
-
-
-        // todo: collect info
-
-        // todo: exit house
     }
 
     function sendHouseData(houseNumber, numOccupants, cityName) {
@@ -93,7 +104,6 @@
         xhr.send(JSON.stringify(data));
     }
 
-
     /**
      * Required to make the modal load at first.
      */
@@ -108,18 +118,53 @@
         });
     }
 
+    /**
+     * Click on the backgroud to make the modal close.
+     */
     function exitHouse() {
 
         let background = document.getElementsByClassName("modal__bg")[0];
         background.click();
     }
 
+    /**
+     * Read the page to get the city name.
+     * @returns {string}
+     */
     function getCityName() {
 
         let titleEl = document.getElementById('title');
         return titleEl.innerHTML;
     }
 
+    /**
+     * Randomly select the next house number to survey.
+     * @param houseNumbers
+     * @returns {int} next house number
+     */
+    function getNextHouseNumber(houseNumbers) {
+
+        let idxOfNextHouse = randomlySelectIdx(0, houseNumbers.length - 1);
+
+        return houseNumbers[idxOfNextHouse];
+    }
+
+    /**
+     * Select a random int between firstIdx and lastIdx.
+     * @param firstIdx
+     * @param lastIdx
+     * @returns {number}
+     */
+    function randomlySelectIdx(firstIdx, lastIdx) // min and max included
+    {
+        return Math.floor(Math.random() * (lastIdx - firstIdx + 1) + firstIdx);
+    }
+
+    /**
+     * Return a promise and sleep the script.
+     * @param ms milliseconds to wait.
+     * @returns {Promise<void>}
+     */
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
