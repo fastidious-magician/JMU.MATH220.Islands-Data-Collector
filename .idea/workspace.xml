@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7fa46b95-e3ca-4035-8fa3-f7425652f4e4" name="Default" comment="-Add listener server">
-      <change beforePath="$PROJECT_DIR$/.idea/MATH220 Islands Data Collection.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="7fa46b95-e3ca-4035-8fa3-f7425652f4e4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/browser-scripts/open_islanders_from_town.js" beforeDir="false" afterPath="$PROJECT_DIR$/browser-scripts/open_islanders_from_town.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-logging/entry-manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/data-logging/entry-manager.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="open_islanders_from_town.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="open_islanders_from_town.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/browser-scripts/open_islanders_from_town.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+            <state relative-caret-position="258">
+              <caret line="120" column="10" lean-forward="true" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -35,17 +30,17 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="139">
+              <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="entry-manager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="entry-manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data-logging/entry-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+            <state relative-caret-position="234">
+              <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -68,6 +63,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>250</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -77,10 +77,10 @@
         <option value="$PROJECT_DIR$/open_islanders_from_town.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/data-logging/csv_writer.js" />
-        <option value="$PROJECT_DIR$/data-logging/entry-manager.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/browser-scripts/open_islanders_from_town.js" />
+        <option value="$PROJECT_DIR$/data-logging/entry-manager.js" />
       </list>
     </option>
   </component>
@@ -171,7 +171,7 @@
       <updated>1544462682455</updated>
       <workItem from="1544462685370" duration="4559000" />
       <workItem from="1544487427172" duration="5607000" />
-      <workItem from="1544649737598" duration="6044000" />
+      <workItem from="1544649737598" duration="7425000" />
     </task>
     <task id="LOCAL-00001" summary="-Update">
       <created>1544494956993</created>
@@ -201,11 +201,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544655187224</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-Update scraper">
+      <created>1544656482726</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1544656482726</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16210000" />
+    <option name="totallyTimeSpent" value="17591000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -225,15 +232,15 @@
       <window_info anchor="bottom" id="DB Execution Console" order="17" />
       <window_info anchor="bottom" id="Regex Tester" order="14" weight="0.32991204" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50076103" side_tool="true" weight="0.32890856" />
-      <window_info active="true" anchor="bottom" x="115" y="555" width="634" height="224" id="Run" order="3" sideWeight="0.49082568" visible="true" weight="0.22566372" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.5091743" side_tool="true" visible="true" weight="0.22566372" />
+      <window_info anchor="bottom" x="115" y="555" width="634" height="224" id="Run" order="3" sideWeight="0.49082568" weight="0.22566372" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4441896" side_tool="true" visible="true" weight="0.28171092" />
       <window_info anchor="right" id="Mongo Explorer" order="3" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5275229" weight="0.25073746" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5704698" visible="true" weight="0.18501529" />
       <window_info anchor="bottom" id="Statistic" order="0" sideWeight="0.51902586" weight="0.28318584" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Structure" order="5" sideWeight="0.38490853" side_tool="true" visible="true" weight="0.16972478" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.5563166" weight="0.28171092" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" sideWeight="0.5558104" visible="true" weight="0.28171092" />
       <window_info id="Favorites" order="1" sideWeight="0.50220263" side_tool="true" weight="0.16392216" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="npm" order="13" sideWeight="0.42781156" weight="0.32258064" />
@@ -259,7 +266,21 @@
     <MESSAGE value="-Automated house clicking" />
     <MESSAGE value="-Update" />
     <MESSAGE value="-Add listener server" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Add listener server" />
+    <MESSAGE value="-Update scraper" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Update scraper" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/data-logging/entry-manager.js</url>
+          <line>18</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="7" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/browser-scripts/open_islanders_from_town.js">
@@ -300,24 +321,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data-logging/entry-manager.js">
+    <entry file="file://$PROJECT_DIR$/browser-scripts/open_islanders_from_town.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state relative-caret-position="258">
+          <caret line="120" column="10" lean-forward="true" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="139">
+          <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/browser-scripts/open_islanders_from_town.js">
+    <entry file="file://$PROJECT_DIR$/data-logging/entry-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+        <state relative-caret-position="234">
+          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
         </state>
       </provider>
     </entry>

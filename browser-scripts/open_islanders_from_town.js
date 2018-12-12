@@ -34,7 +34,7 @@
 
     let visitedHouseNumbers = [];
     // let numHousesToSurvey = Math.floor(houseNumbers.length * 0.25); // TODO: calculate this proportionally to the town size.
-    let numHousesToSurvey = 4;
+    let numHousesToSurvey = 40;
     console.log("Num houses to survey: " + numHousesToSurvey);
     for (let houseIdx = 0; houseIdx < (numHousesToSurvey + 1); houseIdx++) {
 
@@ -48,7 +48,7 @@
         // open the modal
         getHouse(currentHouseNumber - 1);
 
-        await sleep(2500);
+        await sleep(1500);
         let modalHasLoadedNextHouseInfo = false;
         while (!modalHasLoadedNextHouseInfo) {
 
@@ -61,12 +61,23 @@
             let rows = houseTableEl.getElementsByTagName("tr");
 
             console.log("Got " + rows.length + " rows");
-            // for (let rowIdx = 0; i < rows.length; rowIdx++) {
-            //     console.log(rows[rowIdx]);
-            // }
-            // if (rows.length === 1) {
-            //     console.log(rows[0].innerHTML);
-            // }
+            if (rows.length === 1) {
+
+                let singleRowContent = rows[0].innerHTML;
+                if (singleRowContent.indexOf("empty") > -1) {
+
+                    // THIS IS A EMPTY ROW. SET RESIDENTS TO 0
+                    console.log("This is empty!!!");
+                }
+                console.log(singleRowContent);
+            }
+            else {
+
+                let residentLinks = houseTableEl.getElementsByTagName('a');
+                for (let resIdx = 0; resIdx < residentLinks.length; resIdx++) {
+                    console.log("Found resident: " + residentLinks[resIdx].innerHTML);
+                }
+            }
 
             // if this house isn't empty
             let numResidents = rows.length;
@@ -102,10 +113,11 @@
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                let json = JSON.parse(xhr.responseText);
-                console.log(json); // response
-            }
+            console.log("Server accepted data.");
+            // if (xhr.readyState === 4 && xhr.status === 200) {
+            //     let json = JSON.parse(xhr.responseText);
+            //     console.log(json); // response
+            // }
         };
 
         let data = {
