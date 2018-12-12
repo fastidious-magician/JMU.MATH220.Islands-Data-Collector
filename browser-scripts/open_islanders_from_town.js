@@ -29,18 +29,20 @@
 
     console.log("Got " + possibleHouseEls.length + " possible houses.");
     console.log("Got " + houseNumbers.length + " real houses.");
-    // console.log(houseNumbers[houseNumbers.length - 1]);
-
-    console.log(houseNumbers);
 
     await clickFirstHouse();
 
+    let visitedHouseNumbers = [];
+    // let numHousesToSurvey = Math.floor(houseNumbers.length * 0.25); // TODO: calculate this proportionally to the town size.
+    let numHousesToSurvey = 4;
+    console.log("Num houses to survey: " + numHousesToSurvey);
+    for (let houseIdx = 0; houseIdx < (numHousesToSurvey + 1); houseIdx++) {
 
-    let numHousesToSurvey = Math.floor(houseNumbers.length * 0.25); // TODO: calculate this proportionally to the town size.
-    for (let i = 0; i < numHousesToSurvey; i++) {
+        let currentHouseNumber = getNextHouseNumber(houseNumbers, visitedHouseNumbers);
+        console.log(visitedHouseNumbers);
 
-        let currentHouseNumber = houseNumbers[i];
-        // TODO: fn getNextHouseNumber return random unvisited value.
+        visitedHouseNumbers.push(currentHouseNumber); // don't visit the same house twice
+
         console.log("Looking for info on house #: " + currentHouseNumber);
 
         // open the modal
@@ -57,6 +59,14 @@
             let houseTableEl = houseInfoEl.getElementsByClassName("residents")[0];
 
             let rows = houseTableEl.getElementsByTagName("tr");
+
+            console.log("Got " + rows.length + " rows");
+            // for (let rowIdx = 0; i < rows.length; rowIdx++) {
+            //     console.log(rows[rowIdx]);
+            // }
+            // if (rows.length === 1) {
+            //     console.log(rows[0].innerHTML);
+            // }
 
             // if this house isn't empty
             let numResidents = rows.length;
@@ -79,9 +89,11 @@
 
             // this is the number of residents at this house.
 
-            await sleep(1500);
+            await sleep(250);
         }
     }
+
+    console.log("Done collecting house data.");
 
     function sendHouseData(houseNumber, numOccupants, cityName) {
 
@@ -137,16 +149,24 @@
         return titleEl.innerHTML;
     }
 
+
     /**
-     * Randomly select the next house number to survey.
-     * @param houseNumbers
-     * @returns {int} next house number
+     *  Randomly select the next house number.
+     *
+     * @param houseNumbers all possible house numbers.
+     * @param visitedHouseNumbers will not return value on this list.
+     * @returns {int} number of next house to visit.
      */
-    function getNextHouseNumber(houseNumbers) {
+    function getNextHouseNumber(houseNumbers, visitedHouseNumbers) {
 
-        let idxOfNextHouse = randomlySelectIdx(0, houseNumbers.length - 1);
+        let nextHouseNumber = houseNumbers[0];
+        while (visitedHouseNumbers.indexOf(nextHouseNumber) > -1) {
+            let selectedIdx = randomlySelectIdx(0, houseNumbers.length - 1);
+            nextHouseNumber = houseNumbers[selectedIdx];
+            console.log("Getting another random index . . .");
+        }
 
-        return houseNumbers[idxOfNextHouse];
+        return nextHouseNumber;
     }
 
     /**
