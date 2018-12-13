@@ -1,3 +1,4 @@
+const CsvWriter = require('./csv_writer');
 
 let loggedCityNames = [];
 let loggedCityData = {};
@@ -19,9 +20,17 @@ module.exports = {
         loggedCityData[entryData.cityName].push(entryData);
     },
 
-    "clearCityData": (cityName) => {
+    "writeLogFiles": (cityName) => {
 
+        let csvLines = [];
+        for (let city in loggedCityData) {
 
+            for (let idx = 0; idx < city.length; idx++) {
+
+                // push to csv lines
+            }
+
+        }
     }
 
 }

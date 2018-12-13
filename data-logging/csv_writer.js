@@ -1,5 +1,7 @@
-
-
+/**
+ * @author Matthew Routon
+ * @type {{getCSVString: (function(*, *): string)}}
+ */
 module.exports = {
 
     getCSVString: (csv_records, csv_row_fields) => {
@@ -17,19 +19,19 @@ module.exports = {
             newline_char: "\r\n"
         };
 
-        for (let header_field in header_fields) {
+        header_fields.map((header_field) => {
 
-            if (header_field == header_fields.length - 1) {
-                csv_str += quote_char + header_fields[header_field] +
-                    quote_char + newline_char;
-
-            }
-            else {
-                csv_str += quote_char + header_fields[header_field] +
-                    quote_char + sep_char;
-            }
-
-        }
+            let test = header_field;
+            // if (header_field === header_fields.length - 1) {
+            //
+            //     csv_str += quote_char + header_fields[header_field] +
+            //         quote_char + newline_char;
+            // }
+            // else {
+            //     csv_str += quote_char + header_fields[header_field] +
+            //         quote_char + sep_char;
+            // }
+        });
 
         let double_quote_items = [];
         let changed_items = [];

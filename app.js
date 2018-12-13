@@ -55,4 +55,9 @@ app.post('/send_house_data', (req, res, next) => {
     res.sendStatus(200);
 });
 
+app.post('/write_log_files', (req, res, next) => {
+
+    EntryManager.writeLogFiles();
+});
+
 module.exports = app;
