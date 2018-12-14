@@ -1,11 +1,14 @@
-const CsvWriter = require('./csv_writer');
-
 let loggedCityNames = [];
 let loggedCityData = {};
 
+/**
+ * @author Matthew Routon
+ * @version 12-12-18
+ * @type {{logEntry: module.exports.logEntry, writeLogFiles: module.exports.writeLogFiles}}
+ */
 module.exports = {
 
-    "logEntry": (entryData) => {
+    logEntry: (entryData) => {
 
         let cityName = entryData.cityName;
 
@@ -20,17 +23,27 @@ module.exports = {
         loggedCityData[entryData.cityName].push(entryData);
     },
 
-    "writeLogFiles": (cityName) => {
+    writeLogFiles: (cityName) => {
 
-        let csvLines = [];
+        let csvLines = "";
+
+        // TODO: Write header line.
+
         for (let city in loggedCityData) {
 
-            for (let idx = 0; idx < city.length; idx++) {
+            let data = loggedCityData[city];
+
+            for (let idx = 0; idx < data.length; idx++) {
+
+                let line = "";
 
                 // push to csv lines
+                test = 1;
             }
 
         }
+
+        // CsvWriter.writeLogFiles()
     }
 
 }

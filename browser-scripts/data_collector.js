@@ -8,7 +8,8 @@
 (async () => {
 
     let cityName = getCityName();
-    let possibleHouseEls = document.getElementsByClassName("house");
+    let possibleHouseEls = document.getElementsByClassName("house"); // automatically excludes empty houses
+    const POPULATION_PROPORTION = 0.07;
 
     let houseNumbers = [];
     for (let i = 0; i < possibleHouseEls.length; i++) {
@@ -33,19 +34,16 @@
     await clickFirstHouse();
 
     let visitedHouseNumbers = [];
-    // let numHousesToSurvey = Math.floor(houseNumbers.length * 0.25); // TODO: calculate this proportionally to the town size.
-    let numHousesToSurvey = 40;
+    let numHousesToSurvey = Math.floor(houseNumbers.length * POPULATION_PROPORTION);
     console.log("Num houses to survey: " + numHousesToSurvey);
-    for (let houseIdx = 0; houseIdx < (numHousesToSurvey + 1); houseIdx++) {
+    for (let houseIdx = 0; houseIdx < numHousesToSurvey; houseIdx++) {
 
         let currentHouseNumber = getNextHouseNumber(houseNumbers, visitedHouseNumbers);
-        console.log(visitedHouseNumbers);
-
         visitedHouseNumbers.push(currentHouseNumber); // don't visit the same house twice
 
         console.log("Looking for info on house #: " + currentHouseNumber);
 
-        // open the modal
+        // open the house modal
         getHouse(currentHouseNumber - 1);
 
         await sleep(1500);
@@ -60,14 +58,14 @@
 
             let rows = houseTableEl.getElementsByTagName("tr");
 
+            let numResidents = 0;
             console.log("Got " + rows.length + " rows");
             if (rows.length === 1) {
 
                 let singleRowContent = rows[0].innerHTML;
                 if (singleRowContent.indexOf("empty") > -1) {
 
-                    // THIS IS A EMPTY ROW. SET RESIDENTS TO 0
-                    console.log("This is empty!!!");
+                    console.log("This is an empty row.");
                 }
                 console.log(singleRowContent);
             }
@@ -75,19 +73,18 @@
 
                 let residentLinks = houseTableEl.getElementsByTagName('a');
                 for (let resIdx = 0; resIdx < residentLinks.length; resIdx++) {
+
                     console.log("Found resident: " + residentLinks[resIdx].innerHTML);
+                    numResidents++;
                 }
             }
-
-            // if this house isn't empty
-            let numResidents = rows.length;
-            // else resident count = 0
 
             console.log("Current house on modal: " + currentHouseOnModal);
             console.log("Current house number on modal: " + currentHouseNumberOnModal);
             console.log("Number of residents: " + numResidents);
 
             if (currentHouseNumberOnModal === currentHouseNumber) {
+
                 modalHasLoadedNextHouseInfo = true;
                 console.log("modal has loaded info for target house");
 
@@ -97,8 +94,6 @@
             else {
                 console.log("Not yet loaded.");
             }
-
-            // this is the number of residents at this house.
 
             await sleep(250);
         }
@@ -112,12 +107,8 @@
         let xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = () => {
             console.log("Server accepted data.");
-            // if (xhr.readyState === 4 && xhr.status === 200) {
-            //     let json = JSON.parse(xhr.responseText);
-            //     console.log(json); // response
-            // }
         };
 
         let data = {
@@ -172,10 +163,19 @@
     function getNextHouseNumber(houseNumbers, visitedHouseNumbers) {
 
         let nextHouseNumber = houseNumbers[0];
-        while (visitedHouseNumbers.indexOf(nextHouseNumber) > -1) {
+
+        const doSelection = () => {
+
             let selectedIdx = randomlySelectIdx(0, houseNumbers.length - 1);
             nextHouseNumber = houseNumbers[selectedIdx];
             console.log("Getting another random index . . .");
+        };
+
+        doSelection();
+
+        // do not go back to an already visited house.
+        while (visitedHouseNumbers.indexOf(nextHouseNumber) > -1) {
+            doSelection();
         }
 
         return nextHouseNumber;
