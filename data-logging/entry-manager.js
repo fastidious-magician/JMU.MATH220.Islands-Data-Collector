@@ -37,7 +37,7 @@ module.exports = {
 
             for (let idx = 0; idx < data.length; idx++) {
 
-                let line = data[idx].houseNumber + "," + '"' + data[idx].cityName + '"' + data[idx].numOccupants;
+                let line = data[idx].houseNumber + ',"' + data[idx].cityName + '",' + data[idx].numOccupants;
                 csvLines += line + "\r\n";
             }
 

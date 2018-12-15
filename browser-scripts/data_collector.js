@@ -59,12 +59,21 @@
         while (!modalHasLoadedNextHouseInfo) {
 
             let houseInfoEl = document.getElementById('houseinfo');
+            if (houseInfoEl === undefined) {
+                continue;
+            }
+
             let currentHouseOnModal = houseInfoEl.getElementsByTagName('h4')[0].innerHTML;
+            if (currentHouseNumber === undefined) {
+                continue;
+            }
+
             let currentHouseNumberOnModal = parseInt(currentHouseOnModal.split(' ')[1]);
 
             let houseTableEl = houseInfoEl.getElementsByClassName("residents")[0];
 
             let rows = houseTableEl.getElementsByTagName("tr");
+
 
             let numResidents = 0;
             console.log("Got " + rows.length + " rows");
