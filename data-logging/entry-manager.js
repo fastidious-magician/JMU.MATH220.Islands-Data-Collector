@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 let loggedCityNames = [];
 let loggedCityData = {};
 
@@ -25,25 +27,28 @@ module.exports = {
 
     writeLogFiles: (cityName) => {
 
-        let csvLines = "";
-
-        // TODO: Write header line.
+        const csvHeader = "HOUSE_NUMBER,CITY_NAME,NUM_RESIDENTS";
 
         for (let city in loggedCityData) {
 
+            let csvLines = "";
+            csvLines += csvHeader + "\r\n";
             let data = loggedCityData[city];
 
             for (let idx = 0; idx < data.length; idx++) {
 
-                let line = "";
-
-                // push to csv lines
-                test = 1;
+                let line = data[i].houseNumber + "," + '"' + data[i].cityName + '"' + data[i].numOccupants;
+                csvLines += line + "\r\n";
             }
 
-        }
+            fs.writeFile(`./results/${city}.csv`, "Hey there!", function(err) {
+                if(err) {
+                    return console.log(err);
+                }
 
-        // CsvWriter.writeLogFiles()
+                console.log("The file was saved!");
+            });
+        }
     }
 
 }

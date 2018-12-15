@@ -9,6 +9,8 @@
 
     let cityName = getCityName();
     let possibleHouseEls = document.getElementsByClassName("house"); // automatically excludes empty houses
+    let numGhostHouses = document.getElementsByClassName("houseghost").length;
+
     const POPULATION_PROPORTION = 0.07;
 
     let houseNumbers = [];
@@ -34,7 +36,13 @@
     await clickFirstHouse();
 
     let visitedHouseNumbers = [];
-    let numHousesToSurvey = Math.floor(houseNumbers.length * POPULATION_PROPORTION);
+
+    let greatestHouseNumber = houseNumbers[houseNumbers.length - 1];
+
+    console.log("Greatest house number: " + greatestHouseNumber);
+    console.log("Num ghost houses: " + numGhostHouses);
+
+    let numHousesToSurvey = (greatestHouseNumber) * POPULATION_PROPORTION;
     console.log("Num houses to survey: " + numHousesToSurvey);
     for (let houseIdx = 0; houseIdx < numHousesToSurvey; houseIdx++) {
 
@@ -65,9 +73,12 @@
                 let singleRowContent = rows[0].innerHTML;
                 if (singleRowContent.indexOf("empty") > -1) {
 
+                    console.log(singleRowContent);
                     console.log("This is an empty row.");
                 }
-                console.log(singleRowContent);
+                else {
+                    numResidents = 1;
+                }
             }
             else {
 
