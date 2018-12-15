@@ -49,7 +49,6 @@ app.post('/send_house_data', (req, res, next) => {
         "cityName": cityName
     });
 
-    console.log(req.body);
     res.sendStatus(200);
 });
 
@@ -57,7 +56,7 @@ app.get('/write_log_files', (req, res, next) => {
 
     console.log("Logging results to CSVs");
     EntryManager.writeLogFiles();
-    res.send(200);
+    res.sendStatus(200);
 });
 
 module.exports = app;

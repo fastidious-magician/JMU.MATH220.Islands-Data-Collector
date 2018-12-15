@@ -37,16 +37,21 @@ module.exports = {
 
             for (let idx = 0; idx < data.length; idx++) {
 
-                let line = data[i].houseNumber + "," + '"' + data[i].cityName + '"' + data[i].numOccupants;
+                let line = data[idx].houseNumber + "," + '"' + data[idx].cityName + '"' + data[idx].numOccupants;
                 csvLines += line + "\r\n";
             }
 
-            fs.writeFile(`./results/${city}.csv`, "Hey there!", function(err) {
-                if(err) {
+            let outputDir = `./results`;
+            if (!fs.existsSync(outputDir)) {
+                fs.mkdirSync(outputDir);
+            }
+
+            fs.writeFile(`./results/${city}.csv`, csvLines, (err) => {
+                if (err) {
                     return console.log(err);
                 }
 
-                console.log("The file was saved!");
+                console.log("Results file for " + city + " created.");
             });
         }
     }
